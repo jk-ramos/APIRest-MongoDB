@@ -1,6 +1,6 @@
 # Documentação da API de Cadastro de Animes
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![NPM](https://img.shields.io/npm/l/react)
 
 ## Introdução
 Bem-vindo à API de Cadastro de Animes. Esta API permite criar, listar, atualizar e deletar registros de animes. A API foi desenvolvida utilizando Node.js e MongoDB.
@@ -9,64 +9,29 @@ Bem-vindo à API de Cadastro de Animes. Esta API permite criar, listar, atualiza
 
 | Método | Rota         | Descrição                         |
 |--------|--------------|-----------------------------------|
-| POST   | `/animes`    | Cria um novo anime                |
-| GET    | `/animes`    | Lista todos os animes             |
-| GET    | `/animes/:id`| Obter detalhes de um anime        |
-| PUT    | `/animes/:id`| Atualizar dados de um anime       |
-| DELETE | `/animes/:id`| Deletar um anime                  |
+| POST   | /animes    | Cria um novo anime                |
+| GET    | /animes    | Lista todos os animes             |
+| GET    | /animes/:id| Obter detalhes de um anime        |
+| PUT    | /animes/:id| Atualizar dados de um anime       |
+| DELETE | /animes/:id| Deletar um anime                  |
 
----
+## Endpoints
+### - GET /anime
+Esse endpoint é responsável por retornar a listagem de todos os animes cadastrados no banco de dados.
 
-## Endpoint: Criar um novo anime
+#### Parâmetros:
+Nenhum
 
-**URL:** `/animes`  
-**Método:** `POST`  
-**Descrição:** Cria um novo anime.  
-**Corpo da requisição:**
+#### Respostas:
+##### OK! 200
+Caso essa resposta aconteça, você vai receber a listagem de todos os animes.
 
-```json
-{
-    "title": "Naruto",
-    "genre": "Action",
-    "episodes": 220,
-    "status": "Completed"
-}
+Exemplo de resposta:
 
-# Respostas:
-# 201 Created:
 
 {
-    "_id": "60b6a9228e7a8c0017b4e1a9",
-    "title": "Naruto",
-    "genre": "Action",
-    "episodes": 220,
-    "status": "Completed",
-    "__v": 0
-}
-
-400 Bad Request:
-
-{
-    "errors": [
+    "animes": [
         {
-            "msg": "Title is required",
-            "param": "title",
-            "location": "body"
-        }
-    ]
-}
-
-## Endpoint: Listar todos os animes
-
-**URL:** `/animes`  
-**Método:** `GET`  
-**Descrição:** Lista todos os animes cadastrados. 
-**Respostas:**
-**200 OK**
-
-
-[
-    {
         "_id": "60b6a9228e7a8c0017b4e1a9",
         "title": "Naruto",
         "genre": "Action",
@@ -82,16 +47,169 @@ Bem-vindo à API de Cadastro de Animes. Esta API permite criar, listar, atualiza
         "status": "Ongoing",
         "__v": 0
     }
-]
+            ]
+        }
+    
 
-## Endpoint:Obter detalhes de um anime
 
-**URL:** `/animes/:id`  
-**Método:** `GET`  
-**Descrição:** Obtém os detalhes de um anime específico pelo seu ID.
-**Exemplo de URL:** `/animes/60b6a9228e7a8c0017b4e1a9`
-**Respostas:**
-**200 OK**
+
+##### Erro Interno do Servidor! 500
+Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor. Motivos podem incluir falhas na comunicação com o banco de dados.
+
+Exemplo de resposta:
+
+
+{
+    "err": "Erro interno do servidor!"
+}
+
+
+### - POST /anime
+Esse endpoint é responsável por cadastrar um novo anime no banco de dados.
+
+#### Parâmetros:
+title: Título do anime.<br>
+year: Ano de lançamento do anime.<br>
+descriptions: Descrições adicionais sobre o anime (opcional).
+
+Exemplo de requisição:
+
+
+{
+    "title": "Naruto",
+    "genere": "Action",
+    "episodes": 220,
+    "status": "Completed"
+}
+    
+
+
+
+#### Respostas:
+##### Criado! 201
+Caso essa resposta aconteça, o novo anime foi criado com sucesso.
+
+Exemplo de resposta: Nenhum conteúdo retornado.
+
+##### Erro Interno do Servidor! 500
+Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
+
+Exemplo de resposta:
+
+
+{
+    "err": "Erro interno do servidor!"
+}
+
+
+
+### - DELETE /anime/
+Esse endpoint é responsável por deletar um anime específico pelo seu ID.
+
+#### Parâmetros:
+id: ID do anime a ser deletado.
+
+#### Respostas:
+##### Sem Conteúdo! 204
+Caso essa resposta aconteça, o anime foi deletado com sucesso e não há conteúdo para retornar ao cliente.
+
+Exemplo de resposta: Nenhum conteúdo retornado.
+
+##### Requisição Inválida! 400
+Caso essa resposta aconteça, significa que o ID fornecido é inválido.
+
+Exemplo de resposta:
+
+
+{
+    "err": "ID inválido!"
+}
+
+
+##### Erro Interno do Servidor! 500
+Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
+
+Exemplo de resposta:
+
+
+{
+    "err": "Erro interno do servidor!"
+}
+
+
+### - PUT /game/
+Esse endpoint é responsável por atualizar as informações de um anime específico pelo seu ID.
+
+#### Parâmetros:
+id: ID do anime a ser atualizado.<br>
+title: Título do anime (opcional).<br>
+year: Ano de lançamento do anime (opcional).<br>
+descriptions: Descrições adicionais sobre o anime (opcional).<br>
+
+Exemplo de requisição:
+
+
+{
+    "title": "Naruto Shippuden",
+    "genere": "Action",
+    "episodes": 500,
+    "status": "Completed"
+}
+    
+
+
+
+#### Respostas:
+##### OK! 200
+Caso essa resposta aconteça, as informações do anime foram atualizadas com sucesso.
+
+Exemplo de resposta:
+
+
+{
+    "_id": "60b6a9228e7a8c0017b4e1a9",
+    "title": "Naruto Shippuden",
+    "genre": "Action",
+    "episodes": 500,
+    "status": "Completed",
+    "__v": 0
+}
+
+
+
+##### Requisição Inválida! 400
+Caso essa resposta aconteça, significa que o ID fornecido é inválido ou a requisição contém dados malformados.
+
+Exemplo de resposta:
+
+
+{
+    "err": "ID inválido ou dados malformados!"
+}
+
+
+##### Erro Interno do Servidor! 500
+Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
+
+Exemplo de resposta:
+
+
+{
+    "err": "Erro interno do servidor!"
+}
+
+
+### - GET /anime/
+Esse endpoint é responsável por retornar as informações de um anime específico pelo seu ID.
+
+#### Parâmetros:
+id: ID do anime a ser consultado.
+
+#### Respostas:
+##### OK! 200
+Caso essa resposta aconteça, você vai receber as informações do anime solicitado.
+
+Exemplo de resposta:
 
 
 {
@@ -103,102 +221,35 @@ Bem-vindo à API de Cadastro de Animes. Esta API permite criar, listar, atualiza
     "__v": 0
 }
 
-**404 Not Found:**
+
+##### Não Encontrado! 404
+Caso essa resposta aconteça, significa que o anime com o ID fornecido não foi encontrado.
+
+Exemplo de resposta:
+
 
 {
-    "message": "Anime not found"
+    "err": "Anime não encontrado!"
 }
 
 
-## Endpoint:Atualizar dados de um anime
+##### Requisição Inválida! 400
+Caso essa resposta aconteça, significa que o ID fornecido é inválido.
 
-**URL:** `/animes/:id`  
-**Método:** `PUT`  
-**Descrição:** Atualiza os dados de um anime específico pelo seu ID.
-**Exemplo de URL:** `/animes/60b6a9228e7a8c0017b4e1a9`
-**Corpo da requisição**
+Exemplo de resposta:
+
 
 {
-    "title": "Naruto Shippuden",
-    "genre": "Action",
-    "episodes": 500,
-    "status": "Completed"
+    "err": "ID inválido!"
 }
 
-**Respostas:**
-**200 OK:**
+
+##### Erro Interno do Servidor! 500
+Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
+
+Exemplo de resposta:
+
 
 {
-    "_id": "60b6a9228e7a8c0017b4e1a9",
-    "title": "Naruto Shippuden",
-    "genre": "Action",
-    "episodes": 500,
-    "status": "Completed",
-    "__v": 0
+    "err": "Erro interno do servidor!"
 }
-
-**400 Bad Request:**
-
-{
-    "errors": [
-        {
-            "msg": "Episodes must be a positive integer",
-            "param": "episodes",
-            "location": "body"
-        }
-    ]
-}
-
-**404 Not Found:**
-
-{
-    "message": "Anime not found"
-}
-
-## Endpoint:Deletar um anime
-
-**URL:** `/animes/:id`  
-**Método:** `DELETE`  
-**Descrição:** Deleta um anime específico pelo seu ID.
-**Exemplo de URL:** `/animes/60b6a9228e7a8c0017b4e1a9`
-**Respostas:**
-**200 OK:**
-
-{
-    "message": "Anime deleted successfully"
-}
-
-**404 Not Found:**
-
-{
-    "message": "Anime not found"
-}
-
-**Estrutura do Banco de Dados**
-**Anime Schema:**
-
-const mongoose = require('mongoose');
-
-const animeSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    genre: {
-        type: String,
-        required: true
-    },
-    episodes: {
-        type: Number,
-        required: true
-    },
-    status: {
-        type: String,
-        required: true,
-        enum: ['Ongoing', 'Completed']
-    }
-});
-
-const Anime = mongoose.model('Anime', animeSchema);
-
-module.exports = Anime;
