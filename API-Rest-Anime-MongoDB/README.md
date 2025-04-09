@@ -34,23 +34,23 @@ Exemplo de resposta:
 ```
 {
     "animes": [
-     ```
-        '''"_id": "60b6a9228e7a8c0017b4e1a9",
+     
+        "_id": "60b6a9228e7a8c0017b4e1a9",
         "title": "Naruto",
         "genre": "Action",
         "episodes": 220,
         "status": "Completed",
         "__v": 0
-    ```
+   
     ,
-    ```
+   
         "_id": "60b6a9228e7a8c0017b4e1b0",
         "title": "One Piece",
         "genre": "Adventure",
         "episodes": 970,
         "status": "Ongoing",
         "__v": 0
-    ```
+    
             ]
         }
 ```
