@@ -1,6 +1,6 @@
 Aqui está a documentação da API de Cadastro de Animes com todos os `{ }` substituídos por `'''`:
 
-```markdown
+
 # Documentação da API de Cadastro de Animes
 
 ![NPM](https://img.shields.io/npm/l/react)
@@ -31,40 +31,40 @@ Caso essa resposta aconteça, você vai receber a listagem de todos os animes.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "animes": [
-     '''
+     ```
         '''"_id": "60b6a9228e7a8c0017b4e1a9",
         "title": "Naruto",
         "genre": "Action",
         "episodes": 220,
         "status": "Completed",
         "__v": 0
-    '''
+    ```
     ,
-    '''
+    ```
         "_id": "60b6a9228e7a8c0017b4e1b0",
         "title": "One Piece",
         "genre": "Adventure",
         "episodes": 970,
         "status": "Ongoing",
         "__v": 0
-    '''
+    ```
             ]
         }
-'''
+```
 
 ##### Erro Interno do Servidor! 500
 Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor. Motivos podem incluir falhas na comunicação com o banco de dados.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Erro interno do servidor!"
 }
-'''
+```
 
 
 ### - POST /anime
@@ -77,14 +77,14 @@ descriptions: Descrições adicionais sobre o anime (opcional).
 
 Exemplo de requisição:
 
-'''
+```
 {
     "title": "Naruto",
     "genere": "Action",
     "episodes": 220,
     "status": "Completed"
 }
-'''
+```
     
 
 #### Respostas:
@@ -98,11 +98,11 @@ Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Erro interno do servidor!"
 }
-'''
+```
 
 ### - DELETE /anime/
 Esse endpoint é responsável por deletar um anime específico pelo seu ID.
@@ -121,22 +121,22 @@ Caso essa resposta aconteça, significa que o ID fornecido é inválido.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "ID inválido!"
 }
-'''
+```
 
 ##### Erro Interno do Servidor! 500
 Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Erro interno do servidor!"
 }
-'''
+```
 
 ### - PUT /game/
 Esse endpoint é responsável por atualizar as informações de um anime específico pelo seu ID.
@@ -149,14 +149,14 @@ descriptions: Descrições adicionais sobre o anime (opcional).<br>
 
 Exemplo de requisição:
 
-'''
+```
 {
     "title": "Naruto Shippuden",
     "genere": "Action",
     "episodes": 500,
     "status": "Completed"
 }
-'''
+```
     
 
 #### Respostas:
@@ -165,7 +165,7 @@ Caso essa resposta aconteça, as informações do anime foram atualizadas com su
 
 Exemplo de resposta:
 
-'''
+```
 {
     "_id": "60b6a9228e7a8c0017b4e1a9",
     "title": "Naruto Shippuden",
@@ -174,29 +174,29 @@ Exemplo de resposta:
     "status": "Completed",
     "__v": 0
 }
-'''
+```
 
 ##### Requisição Inválida! 400
 Caso essa resposta aconteça, significa que o ID fornecido é inválido ou a requisição contém dados malformados.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "ID inválido ou dados malformados!"
 }
-'''
+```
 
 ##### Erro Interno do Servidor! 500
 Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Erro interno do servidor!"
 }
-'''
+```
 
 ### - GET /anime/
 Esse endpoint é responsável por retornar as informações de um anime específico pelo seu ID.
@@ -210,7 +210,7 @@ Caso essa resposta aconteça, você vai receber as informações do anime solici
 
 Exemplo de resposta:
 
-'''
+```
 {
     "_id": "60b6a9228e7a8c0017b4e1a9",
     "title": "Naruto",
@@ -219,38 +219,37 @@ Exemplo de resposta:
     "status": "Completed",
     "__v": 0
 }
-'''
+```
 
 ##### Não Encontrado! 404
 Caso essa resposta aconteça, significa que o anime com o ID fornecido não foi encontrado.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Anime não encontrado!"
 }
-'''
+```
 
 ##### Requisição Inválida! 400
 Caso essa resposta aconteça, significa que o ID fornecido é inválido.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "ID inválido!"
 }
-'''
+```
 
 ##### Erro Interno do Servidor! 500
 Caso essa resposta aconteça, significa que ocorreu um erro interno no servidor.
 
 Exemplo de resposta:
 
-'''
+```
 {
     "err": "Erro interno do servidor!"
 }
-'''
 ```
