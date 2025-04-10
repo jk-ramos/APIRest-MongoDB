@@ -1,6 +1,3 @@
-Aqui está a documentação da API de Cadastro de Animes com todos os `{ }` substituídos por `'''`:
-
-
 # Documentação da API de Cadastro de Animes
 
 ![NPM](https://img.shields.io/npm/l/react)
